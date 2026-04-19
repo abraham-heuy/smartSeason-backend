@@ -15,6 +15,9 @@ import userRoutes from './routes/user.routes';
 dotenv.config();
 
 const app = express();
+//Trust proxy for cloud solutions(get real IP and support secure cookies!)
+app.set('trust proxy', 1);
+
 const PORT: number = parseInt(process.env.PORT || '8080', 10);
 const HOST: string = process.env.HOST || '0.0.0.0';
 

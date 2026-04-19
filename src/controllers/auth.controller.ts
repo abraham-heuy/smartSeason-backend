@@ -29,11 +29,11 @@ async login(req: Request, res: Response, next: NextFunction) {
     // Set cookie
     res.cookie('token', result.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      secure: true,                     // always true for HTTPS
+      sameSite: 'none',                 // required for cross‑origin
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: '/',
     });
-    
     res.status(200).json({ status: 'success', data: { user: result.user } });
   } catch (error) {
     next(error);
