@@ -3,18 +3,14 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import { AppDataSource } from './src/config/data-source';
+import { AppDataSource } from './config/data-source';
+import { errorHandler } from './middlewares/error.middleware';
+import authRoutes from './routes/auth.routes';
+import dashboardRoutes from './routes/dashboard.routes';
+import fieldRoutes from './routes/field.routes';
+import notificationRoutes from './routes/notification.routes';
+import userRoutes from './routes/user.routes';
 
-// Import routes
-import authRoutes from './src/routes/auth.routes';
-import userRoutes from './src/routes/user.routes';
-import fieldRoutes from './src/routes/field.routes';
-import dashboardRoutes from './src/routes/dashboard.routes';
-import notificationRoutes from './src/routes/notification.routes';
-import { seedInitialData } from './src/utils/seed/seed';
-
-// Import error handler
-import { errorHandler } from './src/middlewares/error.middleware';
 
 dotenv.config();
 
